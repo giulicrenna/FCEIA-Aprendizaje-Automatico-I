@@ -2,34 +2,72 @@
 ---
 
 // Personalización de la paleta institucional FCEIA/UNR sobre just-the-docs.
-// Referencia: https://just-the-docs.github.io/just-the-docs/docs/customization/
+//
+// Importante: con `remote_theme` en GitHub Pages, NO se puede hacer
+// `@import "just-the-docs"` (los parciales SCSS del tema remoto no están
+// en el SASS load path). El tema carga sus propios estilos vía remote_theme;
+// este archivo sobreescribe reglas CSS/SCSS puntuales para usar la paleta
+// institucional.
 
 // Paleta institucional
 $fceia-blue: #003366;
 $unr-red:    #e8112d;
 
-// ---------- Overrides de variables de just-the-docs ----------
-// Documentadas en: https://github.com/just-the-docs/just-the-docs/blob/main/_sass/support/_variables.scss
+// ---------- Links ----------
+a {
+  color: $fceia-blue;
+}
 
-$link-color:                 $fceia-blue;
-$link-color-visited:         darken($fceia-blue, 10%);
-$btn-primary-color:          $unr-red;
+a:visited {
+  color: darken($fceia-blue, 10%);
+}
 
-$sidebar-color:              darken($fceia-blue, 5%);
-$sidebar-active-color:       $unr-red;
+// ---------- Sidebar: ítem activo (página actual) ----------
+.site-nav .nav-list .nav-list-item .nav-list-link.active,
+.side-bar .nav-list .nav-list-item .nav-list-link.active {
+  background-image: linear-gradient(
+    to right,
+    $unr-red 0%,
+    $unr-red 2px,
+    transparent 2px,
+    transparent 100%
+  );
+  color: $unr-red;
+}
 
-$body-background-color:      #fdfdfd;
-$body-text-color:            #1f1f1f;
-$body-heading-color:         $fceia-blue;
+// ---------- Botones primarios (callouts, etc.) ----------
+.btn-primary {
+  background-color: $unr-red;
+  border-color: $unr-red;
+}
 
-$search-background-color:    #e8edf2;
-$search-result-preview-color: #444;
-$search-border-color:        #ccd5e0;
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: darken($unr-red, 8%);
+  border-color: darken($unr-red, 8%);
+}
 
-// Tipografía
-$body-font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
-$mono-font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+// ---------- Body y tipografía ----------
+body {
+  background-color: #fdfdfd;
+  color: #1f1f1f;
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
 
-// Importar el SCSS base del tema. Las variables sobreescritas arriba
-// toman efecto al ser declaradas antes del import.
-@import "just-the-docs";
+h1, h2, h3, h4, h5, h6 {
+  color: $fceia-blue;
+}
+
+code, pre {
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+// ---------- Search ----------
+.search {
+  background-color: #e8edf2;
+}
+
+.search .search-results .search-result:hover,
+.search .search-results .search-result.is-active {
+  background-color: lighten($fceia-blue, 60%);
+}
