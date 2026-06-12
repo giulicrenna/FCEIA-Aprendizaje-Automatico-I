@@ -25,13 +25,16 @@ El sitio queda disponible en <http://localhost:4000>.
 4. Branch: `main`, folder: `/ (root)`.
 5. Guardar. GitHub construye y publica en la URL que aparece arriba.
 
-> ⚠️ Configurar `url` y `baseurl` en [`_config.yml`](_config.yml) con el usuario y nombre de repo reales antes del primer deploy.
+> Configurar `url` y `baseurl` en [`_config.yml`](_config.yml) con el usuario y nombre de repo reales antes del primer deploy.
 
 ## Estructura del repositorio
 
-- [`_config.yml`](_config.yml) — Configuración general (tema, plugins, idioma, URL).
-- [`assets/css/custom.scss`](assets/css/custom.scss) — Paleta institucional FCEIA/UNR.
-- [`index.md`](index.md) — Página de inicio (única página de contenido por ahora).
+- [`_config.yml`](_config.yml) — Configuración general (tema, plugins, idioma, URL, math engine).
+- [`_includes/head_custom.html`](_includes/head_custom.html) — Inyecta MathJax en el `<head>` para renderizar fórmulas.
+- [`assets/css/custom.scss`](assets/css/custom.scss) — Paleta institucional FCEIA/UNR + tipografía.
+- [`index.md`](index.md) — Página de inicio (docentes, links, canales, condiciones de aprobación).
+- [`unidad_0/index.md`](unidad_0/index.md) — Apunte completo de la materia (10 unidades, con figuras).
+- [`unidad_0/images/`](unidad_0/images/) — Figuras del apunte (`figura_1.png` … `figura_8.png`).
 - [`Gemfile`](Gemfile) — Dependencias para desarrollo local.
 
 ## Cómo agregar páginas de contenido

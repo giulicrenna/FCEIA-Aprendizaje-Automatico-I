@@ -9,65 +9,310 @@
 // este archivo sobreescribe reglas CSS/SCSS puntuales para usar la paleta
 // institucional.
 
+// =====================================================================
 // Paleta institucional
-$fceia-blue: #003366;
-$unr-red:    #e8112d;
+// =====================================================================
 
-// ---------- Links ----------
+// Azul FCEIA — primario de la facultad. Usado en headers, links y títulos.
+$fceia-blue:       #003366;
+$fceia-blue-dark:  #002247;
+$fceia-blue-light: #1a4d80;
+
+// Rojo UNR — acento institucional. Usado en items activos y CTAs.
+$unr-red:       #e8112d;
+$unr-red-dark:  #b30d22;
+$unr-red-light: #f06270;
+
+// Grises neutros
+$gray-50:  #f8f9fa;
+$gray-100: #f1f3f5;
+$gray-200: #e9ecef;
+$gray-700: #495057;
+$gray-900: #212529;
+
+// =====================================================================
+// Tipografía institucional
+// =====================================================================
+//
+
+$font-sans: "Helvetica Neue", "Segoe UI", Helvetica, Arial, system-ui, sans-serif;
+$font-serif: Georgia, "Times New Roman", serif;
+$font-mono: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+// =====================================================================
+// Base
+// =====================================================================
+
+body {
+  background-color: #fdfdfd;
+  color: $gray-900;
+  font-family: $font-sans;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+// =====================================================================
+// Header y barra superior
+// =====================================================================
+
+.site-header,
+.site-title {
+  background-color: $fceia-blue;
+  color: #fff;
+}
+
+.site-title {
+  font-family: $font-serif;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+// Pequeño "ribbon" institucional arriba del todo, identificando la facultad.
+.site-header::before {
+  content: "FCEIA · UNR · Aprendizaje Automático I";
+  display: block;
+  background-color: $fceia-blue-dark;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  text-align: center;
+  font-family: $font-sans;
+}
+
+// =====================================================================
+// Títulos
+// =====================================================================
+
+h1, h2, h3, h4, h5, h6 {
+  color: $fceia-blue;
+  font-family: $font-serif;
+  font-weight: 600;
+}
+
+h1 {
+  border-bottom: 3px solid $fceia-blue;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.7em;
+}
+
+h2 {
+  border-bottom: 1px solid $gray-200;
+  padding-bottom: 0.2em;
+  margin-top: 1.5em;
+}
+
+h3 {
+  color: $fceia-blue-dark;
+  margin-top: 1.3em;
+}
+
+// =====================================================================
+// Links
+// =====================================================================
+
 a {
   color: $fceia-blue;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+a:hover {
+  color: $fceia-blue-light;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 a:visited {
-  color: darken($fceia-blue, 10%);
+  color: $fceia-blue-dark;
 }
 
-// ---------- Sidebar: ítem activo (página actual) ----------
+// =====================================================================
+// Sidebar: ítem activo (página actual)
+// =====================================================================
+
 .site-nav .nav-list .nav-list-item .nav-list-link.active,
 .side-bar .nav-list .nav-list-item .nav-list-link.active {
   background-image: linear-gradient(
     to right,
     $unr-red 0%,
-    $unr-red 2px,
-    transparent 2px,
+    $unr-red 3px,
+    transparent 3px,
     transparent 100%
   );
   color: $unr-red;
+  font-weight: 600;
 }
 
-// ---------- Botones primarios (callouts, etc.) ----------
+.site-nav .nav-list .nav-list-item .nav-list-link:hover,
+.side-bar .nav-list .nav-list-item .nav-list-link:hover {
+  background-color: rgba($fceia-blue, 0.05);
+}
+
+// =====================================================================
+// Botones primarios (callouts, etc.)
+// =====================================================================
+
 .btn-primary {
   background-color: $unr-red;
   border-color: $unr-red;
+  color: #fff;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: darken($unr-red, 8%);
-  border-color: darken($unr-red, 8%);
+  background-color: $unr-red-dark;
+  border-color: $unr-red-dark;
 }
 
-// ---------- Body y tipografía ----------
-body {
-  background-color: #fdfdfd;
-  color: #1f1f1f;
-  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: $fceia-blue;
-}
+// =====================================================================
+// Código
+// =====================================================================
 
 code, pre {
-  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: $font-mono;
+  font-size: 0.9em;
 }
 
-// ---------- Search ----------
+code {
+  background-color: $gray-100;
+  color: $fceia-blue-dark;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  border: 1px solid $gray-200;
+}
+
+pre {
+  background-color: $gray-50;
+  border: 1px solid $gray-200;
+  border-left: 3px solid $fceia-blue;
+  border-radius: 4px;
+  padding: 0.9em 1em;
+  line-height: 1.45;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+// =====================================================================
+// Tablas
+// =====================================================================
+
+table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+  font-size: 0.95em;
+}
+
+th {
+  background-color: $fceia-blue;
+  color: #fff;
+  text-align: left;
+  padding: 0.6em 0.9em;
+  font-weight: 600;
+  border: 1px solid $fceia-blue-dark;
+}
+
+td {
+  padding: 0.5em 0.9em;
+  border: 1px solid $gray-200;
+}
+
+tr:nth-child(even) td {
+  background-color: $gray-50;
+}
+
+// =====================================================================
+// Blockquotes
+// =====================================================================
+
+blockquote {
+  border-left: 4px solid $fceia-blue;
+  background-color: rgba($fceia-blue, 0.04);
+  color: $gray-700;
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+
+blockquote p {
+  margin: 0.3em 0;
+}
+
+// =====================================================================
+// Búsqueda
+// =====================================================================
+
 .search {
   background-color: #e8edf2;
 }
 
 .search .search-results .search-result:hover,
 .search .search-results .search-result.is-active {
-  background-color: lighten($fceia-blue, 60%);
+  background-color: rgba($fceia-blue, 0.1);
+}
+
+.search-input {
+  border: 1px solid darken(#e8edf2, 10%);
+  border-radius: 4px;
+}
+
+// =====================================================================
+// Footer
+// =====================================================================
+
+.site-footer {
+  border-top: 3px solid $fceia-blue;
+  background-color: $gray-50;
+  color: $gray-700;
+  font-size: 0.9em;
+}
+
+.site-footer a {
+  color: $fceia-blue;
+}
+
+// =====================================================================
+// Contenido principal — área de lectura
+// =====================================================================
+
+.main-content-wrap {
+  max-width: 900px;
+}
+
+.main-content {
+  padding: 2rem 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+// =====================================================================
+// Fórmulas matemáticas (MathJax)
+// =====================================================================
+
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2em 0;
+}
+
+mjx-container[display="true"] {
+  margin: 1em 0;
+  padding: 0.5em 0;
+  border-top: 1px solid $gray-200;
+  border-bottom: 1px solid $gray-200;
+  background-color: $gray-50;
 }

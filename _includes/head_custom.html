@@ -1,0 +1,37 @@
+{%- comment -%}
+  head_custom.html — Inyectado automáticamente por just-the-docs en el <head>
+  de cada página. Lo usamos para cargar MathJax v3 y re-typeset después de
+  navegaciones con Turbolinks (SPA-like) que usa el tema.
+
+  Sin este include, las fórmulas escritas como $...$ y $$...$$ en markdown
+  se renderizarían como texto plano.
+{%- endcomment -%}
+
+<script>
+  window.MathJax = {
+    tex: {
+      // Soportar $...$ y $$...$$ además de \(...\) y \[...\]
+      inlineMath:  [['$',  '$'],  ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      // Evitar re-typeset dentro de bloques que no son matemática
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    startup: {
+      // Avisar cuando MathJax esté listo para re-typeset
+      ready: () => {
+        MathJax.startup.defaultReady();
+        document.addEventListener('turbolinks:load', () => MathJax.typeset());
+        document.addEventListener('turbo:load',       () => MathJax.typeset());
+      }
+    }
+  };
+</script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>

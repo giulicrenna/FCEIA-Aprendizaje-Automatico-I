@@ -25,6 +25,17 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# ---------- Markdown ----------
+# Kramdown con math engine mathjax: las fórmulas en $...$ y $$...$$ se
+# preprocesan a <script type="math/tex">...</script> que MathJax (cargado
+# en _includes/head_custom.html) renderiza en el navegador.
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  hard_wrap: false
+
 # ---------- Configuración del tema ----------
 search_enabled: true
 color_scheme: light
