@@ -1,0 +1,35 @@
+---
+---
+
+// Personalización de la paleta institucional FCEIA/UNR sobre just-the-docs.
+// Referencia: https://just-the-docs.github.io/just-the-docs/docs/customization/
+
+// Paleta institucional
+$fceia-blue: #003366;
+$unr-red:    #e8112d;
+
+// ---------- Overrides de variables de just-the-docs ----------
+// Documentadas en: https://github.com/just-the-docs/just-the-docs/blob/main/_sass/support/_variables.scss
+
+$link-color:                 $fceia-blue;
+$link-color-visited:         darken($fceia-blue, 10%);
+$btn-primary-color:          $unr-red;
+
+$sidebar-color:              darken($fceia-blue, 5%);
+$sidebar-active-color:       $unr-red;
+
+$body-background-color:      #fdfdfd;
+$body-text-color:            #1f1f1f;
+$body-heading-color:         $fceia-blue;
+
+$search-background-color:    #e8edf2;
+$search-result-preview-color: #444;
+$search-border-color:        #ccd5e0;
+
+// Tipografía
+$body-font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+$mono-font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+
+// Importar el SCSS base del tema. Las variables sobreescritas arriba
+// toman efecto al ser declaradas antes del import.
+@import "just-the-docs";

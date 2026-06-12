@@ -1,0 +1,19 @@
+# Salida del build de Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Estado de Bundler
+.bundle/
+vendor/
+
+# Caché de Sass
+.sass-cache/
+
+# Editores
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

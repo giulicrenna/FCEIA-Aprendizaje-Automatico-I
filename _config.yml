@@ -1,0 +1,52 @@
+# Configuración de Jekyll — Aprendizaje Automático I (FCEIA, UNR)
+# Desplegado como sitio estático en GitHub Pages.
+
+# ---------- Identidad del sitio ----------
+title: Aprendizaje Automático I
+description: Sitio oficial de la materia Aprendizaje Automático I — FCEIA (UNR)
+lang: es-ES
+
+# ---------- URL en GitHub Pages ----------
+# Reemplazar USUARIO y NOMBRE-REPO con los valores reales.
+# Ejemplo: si el repo es "giuliano/fceia-aa1", queda:
+#   url: "https://giuliano.github.io"
+#   baseurl: "/fceia-aa1"
+url: "https://giulicrenna.github.io"
+baseurl: "/FCEIA-Aprendizaje-Automatico-I"
+
+# ---------- Tema ----------
+# just-the-docs no está en la lista blanca de GitHub Pages; se usa como
+# remote_theme, que es el patrón oficial recomendado y soportado.
+remote_theme: just-the-docs/just-the-docs@v0.8.2
+
+# ---------- Plugins (todos soportados por GitHub Pages) ----------
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ---------- Configuración del tema ----------
+search_enabled: true
+color_scheme: light
+permalink: pretty
+
+# ---------- Navegación ----------
+# La navegación se controla desde el front matter de cada página
+# (campos `title` y `nav_order`). Para crear secciones anidadas,
+# agregá `parent:` y `grand_parent:` en el front matter de la página hija
+# y definí la entrada padre en este bloque `nav`.
+#
+# Ejemplo de nav con secciones (descomentar y editar cuando se agreguen
+# páginas de contenido):
+#
+# nav:
+#   - title: Inicio
+#     url: /
+#   - title: Programa
+#     url: /programa
+#   - title: Clases
+#     children:
+#       - title: Teóricas
+#         url: /teoricas
+#       - title: Prácticas
+#         url: /practicas
