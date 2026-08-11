@@ -12,9 +12,9 @@ nav_order: 3
 
 - [`Clase 1 - Introducción AA1.pptx`](slides/Clase 1 - Introducción AA1.pptx) — primera clase teórica: qué es el ML, por qué importa, taxonomía de algoritmos.
 - [`Clase 2 -  Introducción AA1.pptx`](slides/Clase 2 -  Introducción AA1.pptx) — segunda clase teórica: pipeline de trabajo, overfitting y regularización.
-- [`scikit-learn.ipynb`](notebooks/scikit-learn.ipynb) — pipeline básico con el dataset Iris y `LogisticRegression`.
-- [`overfitting.ipynb`](notebooks/overfitting.ipynb) — sobreajuste y subajuste: regresión lineal vs. árbol de decisión vs. Random Forest.
-- [`tic-tac-toe.ipynb`](TaTeTi_ Ejemplo de Reinforcement learning/tic-tac-toe.ipynb) — entrenamiento de un agente con Q-Learning por auto-juego.
+- [`scikit-learn.ipynb`](notebooks/scikit-learn.ipynb){:download} — pipeline básico con el dataset Iris y `LogisticRegression`.
+- [`overfitting.ipynb`](notebooks/overfitting.ipynb){:download} — sobreajuste y subajuste: regresión lineal vs. árbol de decisión vs. Random Forest.
+- [`tic-tac-toe.ipynb`](TaTeTi_ Ejemplo de Reinforcement learning/tic-tac-toe.ipynb){:download} — entrenamiento de un agente con Q-Learning por auto-juego.
 - [`ticTacToe.py`](TaTeTi_ Ejemplo de Reinforcement learning/ticTacToe.py) — implementación del juego TaTeTi con interfaz `tkinter`.
 - Artefactos auxiliares del ejemplo de RL: [`board.png`](TaTeTi_ Ejemplo de Reinforcement learning/board.png), [`policy_p1`](TaTeTi_ Ejemplo de Reinforcement learning/policy_p1) y [`policy_p2`](TaTeTi_ Ejemplo de Reinforcement learning/policy_p2) (Q-tables serializadas con `pickle`).
 
@@ -38,14 +38,14 @@ nav_order: 3
 
 El **Aprendizaje Automático** (*Machine Learning*, ML) es la subdisciplina de la inteligencia artificial que estudia algoritmos capaces de **mejorar su desempeño en una tarea a partir de datos**, sin estar explícitamente programados para cada caso. La definición canónica es la de **Mitchell (1997)**:
 
-> *Se dice que un programa **aprende** de la experiencia $E$ con respecto a una clase de tareas $T$ y una medida de desempeño $P$, si su desempeño en $T$, medido por $P$, mejora con la experiencia $E$.*
+> *Se dice que un programa **aprende** de la experiencia \(E\) con respecto a una clase de tareas \(T\) y una medida de desempeño \(P\), si su desempeño en \(T\), medido por \(P\), mejora con la experiencia \(E\).*
 
 Formalmente, un sistema de ML consta de tres componentes:
 
-- **Función hipótesis (modelo):** una familia paramétrica $f_\theta : \mathcal{X} \to \mathcal{Y}$ que aproxima la función desconocida que mapea entradas a salidas.
-- **Función de pérdida (*loss*):** $\ell(y, \hat y)$ que cuantifica el error en una predicción individual. La pérdida agregada sobre el dataset es típicamente
-  $$L(\theta) = \frac{1}{n}\sum_{i=1}^n \ell\big(y_i, f_\theta(x_i)\big).$$
-- **Optimizador:** el procedimiento que ajusta $\theta$ para minimizar $L(\theta)$. En esta unidad veremos el caso simple de regresión lineal.
+- **Función hipótesis (modelo):** una familia paramétrica \(f_\theta : \mathcal{X} \to \mathcal{Y}\) que aproxima la función desconocida que mapea entradas a salidas.
+- **Función de pérdida (*loss*):** \(\ell(y, \hat y)\) que cuantifica el error en una predicción individual. La pérdida agregada sobre el dataset es típicamente
+  \(\(L(\theta) = \frac{1}{n}\sum_{i=1}^n \ell\big(y_i, f_\theta(x_i)\big).\)\)
+- **Optimizador:** el procedimiento que ajusta \(\theta\) para minimizar \(L(\theta)\). En esta unidad veremos el caso simple de regresión lineal.
 
 A diferencia de la programación clásica —donde el humano escribe reglas explícitas—, en ML **las reglas se inducen a partir de ejemplos**. Esto es útil cuando:
 
@@ -61,30 +61,30 @@ Los algoritmos de ML se agrupan en tres grandes paradigmas según el tipo de se�
 
 ### 2.1. Aprendizaje supervisado
 
-Disponemos de pares $(x_i, y_i)$ donde $y_i$ es la **etiqueta verdadera**. El objetivo es aprender una función $f$ que prediga $y$ para nuevas $x$. Se subdivide en:
+Disponemos de pares \((x_i, y_i)\) donde \(y_i\) es la **etiqueta verdadera**. El objetivo es aprender una función \(f\) que prediga \(y\) para nuevas \(x\). Se subdivide en:
 
-- **Regresión:** $y \in \mathbb{R}$ (precio, temperatura, demanda).
-- **Clasificación binaria:** $y \in \{0, 1\}$ (spam/no-spam, fraude/no-fraude).
-- **Clasificación multiclase:** $y \in \{1, \dots, K\}$ con $K > 2$ (dígitos, especies).
+- **Regresión:** \(y \in \mathbb{R}\) (precio, temperatura, demanda).
+- **Clasificación binaria:** \(y \in \{0, 1\}\) (spam/no-spam, fraude/no-fraude).
+- **Clasificación multiclase:** \(y \in \{1, \dots, K\}\) con \(K > 2\) (dígitos, especies).
 - **Clasificación multi-etiqueta:** cada ejemplo puede tener varias etiquetas simultáneamente.
 
 ### 2.2. Aprendizaje no supervisado
 
-Sólo tenemos $x_i$, sin etiquetas. Buscamos **estructura** en los datos:
+Sólo tenemos \(x_i\), sin etiquetas. Buscamos **estructura** en los datos:
 
-- **Clustering** — agrupar ejemplos similares ($k$-means, DBSCAN, hierarchical clustering).
+- **Clustering** — agrupar ejemplos similares (\(k\)-means, DBSCAN, hierarchical clustering).
 - **Reducción de dimensionalidad** — proyectar a un espacio de menor dimensión preservando estructura (PCA, t-SNE, UMAP).
 - **Detección de anomalías** — identificar observaciones que se apartan del patrón general (Isolation Forest, One-Class SVM).
 
 ### 2.3. Aprendizaje por refuerzo
 
-Un **agente** toma decisiones en un **entorno** y recibe **recompensas**. El objetivo es aprender una **política** $\pi$ que maximice la recompensa acumulada. Ejemplos: juegos (AlphaGo), robótica, sistemas de recomendación, manejo de inventarios.
+Un **agente** toma decisiones en un **entorno** y recibe **recompensas**. El objetivo es aprender una **política** \(\pi\) que maximice la recompensa acumulada. Ejemplos: juegos (AlphaGo), robótica, sistemas de recomendación, manejo de inventarios.
 
 ---
 
 ## 3. El pipeline estándar de scikit-learn
 
-El notebook [`scikit-learn.ipynb`](notebooks/scikit-learn.ipynb) introduce el flujo de trabajo canónico en `scikit-learn`. Todos los estimadores comparten el mismo contrato:
+El notebook [`scikit-learn.ipynb`](notebooks/scikit-learn.ipynb){:download} introduce el flujo de trabajo canónico en `scikit-learn`. Todos los estimadores comparten el mismo contrato:
 
 ```python
 estimator.fit(X_train, y_train)        # aprende los parámetros
@@ -152,13 +152,13 @@ print(classification_report(y_test, y_pred, target_names=['setosa','versicolor',
 
 ## 4. Sesgo y varianza (*bias-variance tradeoff*)
 
-Para cualquier modelo $\hat f$ entrenado sobre un dataset finito, el error esperado en un punto $x$ se descompone en tres términos independientes:
+Para cualquier modelo \(\hat f\) entrenado sobre un dataset finito, el error esperado en un punto \(x\) se descompone en tres términos independientes:
 
-$$\mathbb{E}\!\left[\big(y - \hat f(x)\big)^2\right] = \underbrace{\text{Bias}^2\!\big(\hat f(x)\big)}_{\text{error de simplificación}} + \underbrace{\text{Var}\!\big(\hat f(x)\big)}_{\text{error de sensibilidad}} + \underbrace{\sigma^2}_{\text{ruido irreducible}}.$$
+\(\(\mathbb{E}\!\left[\big(y - \hat f(x)\big)^2\right] = \underbrace{\text{Bias}^2\!\big(\hat f(x)\big)}_{\text{error de simplificación}} + \underbrace{\text{Var}\!\big(\hat f(x)\big)}_{\text{error de sensibilidad}} + \underbrace{\sigma^2}_{\text{ruido irreducible}}.\)\)
 
 - **Sesgo²:** error por hacer suposiciones demasiado simples. Disminuye con modelos más flexibles.
 - **Varianza:** sensibilidad del modelo a la muestra particular de entrenamiento. Aumenta con la flexibilidad.
-- **Ruido irreducible** $\sigma^2$: varianza intrínseca de la variable objetivo, no eliminable.
+- **Ruido irreducible** \(\sigma^2\): varianza intrínseca de la variable objetivo, no eliminable.
 
 **Tradeoff:** a medida que crece la complejidad del modelo, el sesgo baja pero la varianza sube. El objetivo es encontrar la complejidad que minimiza la suma. En la práctica esto se controla con:
 
@@ -176,7 +176,7 @@ $$\mathbb{E}\!\left[\big(y - \hat f(x)\big)^2\right] = \underbrace{\text{Bias}^2
 
 ## 5. Sobreajuste y subajuste en la práctica
 
-El notebook [`overfitting.ipynb`](notebooks/overfitting.ipynb) ilustra el fenómeno con un dataset unidimensional pequeño. Se entrenan cuatro modelos y se comparan las métricas en train y test:
+El notebook [`overfitting.ipynb`](notebooks/overfitting.ipynb){:download} ilustra el fenómeno con un dataset unidimensional pequeño. Se entrenan cuatro modelos y se comparan las métricas en train y test:
 
 | Modelo | MSE train | MSE test | R² train | R² test |
 |---|---|---|---|---|
@@ -206,11 +206,11 @@ División única (e.g. 80/20). Es la opción más simple pero la estimación tie
 
 ### 6.2. *k*-fold cross-validation
 
-Se particionan los datos en $k$ folds; cada fold se usa una vez como validación y los $k-1$ restantes como entrenamiento. La métrica final es el promedio:
+Se particionan los datos en \(k\) folds; cada fold se usa una vez como validación y los \(k-1\) restantes como entrenamiento. La métrica final es el promedio:
 
-$$\text{CV}(k) = \frac{1}{k}\sum_{j=1}^{k} \text{métrica}_j.$$
+\(\(\text{CV}(k) = \frac{1}{k}\sum_{j=1}^{k} \text{métrica}_j.\)\)
 
-Valores típicos: $k = 5$ o $k = 10$.
+Valores típicos: \(k = 5\) o \(k = 10\).
 
 ### 6.3. Stratified *k*-fold
 
@@ -223,7 +223,7 @@ skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 ### 6.4. Leave-One-Out (LOO)
 
-Caso extremo: $k = n$. Cada ejemplo se valida una vez. **Carísimo** en datasets grandes, pero útil cuando $n$ es chico.
+Caso extremo: \(k = n\). Cada ejemplo se valida una vez. **Carísimo** en datasets grandes, pero útil cuando \(n\) es chico.
 
 ### 6.5. Validación cruzada anidada
 
@@ -237,45 +237,45 @@ El **Aprendizaje por Refuerzo** (*Reinforcement Learning*, RL) es el tercer para
 
 ### 7.1. Proceso de Decisión de Markov (MDP)
 
-Un MDP se define por la tupla $(S, A, P, R, \gamma)$:
+Un MDP se define por la tupla \((S, A, P, R, \gamma)\):
 
-- $S$ — conjunto de **estados**.
-- $A$ — conjunto de **acciones**.
-- $P(s' \mid s, a)$ — probabilidad de transición al estado $s'$ luego de tomar la acción $a$ en el estado $s$.
-- $R(s, a, s')$ — **recompensa** recibida.
-- $\gamma \in [0, 1)$ — **factor de descuento** que pondera más el corto plazo que el largo plazo.
+- \(S\) — conjunto de **estados**.
+- \(A\) — conjunto de **acciones**.
+- \(P(s' \mid s, a)\) — probabilidad de transición al estado \(s'\) luego de tomar la acción \(a\) en el estado \(s\).
+- \(R(s, a, s')\) — **recompensa** recibida.
+- \(\gamma \in [0, 1)\) — **factor de descuento** que pondera más el corto plazo que el largo plazo.
 
-En cada paso $t$, el agente observa el estado $s_t$, elige una acción $a_t \sim \pi(\cdot \mid s_t)$ según su **política** $\pi$, recibe una recompensa $r_{t+1}$ y pasa a $s_{t+1}$.
+En cada paso \(t\), el agente observa el estado \(s_t\), elige una acción \(a_t \sim \pi(\cdot \mid s_t)\) según su **política** \(\pi\), recibe una recompensa \(r_{t+1}\) y pasa a \(s_{t+1}\).
 
 ### 7.2. Función de valor y de valor-acción
 
-La **función de valor** de la política $\pi$ mide cuán buena es la recompensa esperada a largo plazo desde un estado:
+La **función de valor** de la política \(\pi\) mide cuán buena es la recompensa esperada a largo plazo desde un estado:
 
-$$V^\pi(s) = \mathbb{E}_\pi\!\left[\sum_{t=0}^{\infty} \gamma^t r_{t+1} \,\Big|\, s_0 = s\right].$$
+\(\(V^\pi(s) = \mathbb{E}_\pi\!\left[\sum_{t=0}^{\infty} \gamma^t r_{t+1} \,\Big|\, s_0 = s\right].\)\)
 
 La **función de valor-acción** (o *Q-función*) evalúa pares estado-acción:
 
-$$Q^\pi(s, a) = \mathbb{E}_\pi\!\left[\sum_{t=0}^{\infty} \gamma^t r_{t+1} \,\Big|\, s_0 = s, a_0 = a\right].$$
+\(\(Q^\pi(s, a) = \mathbb{E}_\pi\!\left[\sum_{t=0}^{\infty} \gamma^t r_{t+1} \,\Big|\, s_0 = s, a_0 = a\right].\)\)
 
-La política óptima cumple $Q^*(s, a) = \max_\pi Q^\pi(s, a)$, y la acción greedy sobre $Q^*$ es la política óptima:
+La política óptima cumple \(Q^*(s, a) = \max_\pi Q^\pi(s, a)\), y la acción greedy sobre \(Q^*\) es la política óptima:
 
-$$\pi^*(s) = \arg\max_a Q^*(s, a).$$
+\(\(\pi^*(s) = \arg\max_a Q^*(s, a).\)\)
 
 ### 7.3. Q-Learning
 
-**Q-Learning** (Watkins, 1989) es un algoritmo *off-policy* que aprende $Q^*$ directamente, sin necesidad de un modelo del entorno. La actualización tras observar $(s, a, r, s')$ es:
+**Q-Learning** (Watkins, 1989) es un algoritmo *off-policy* que aprende \(Q^*\) directamente, sin necesidad de un modelo del entorno. La actualización tras observar \((s, a, r, s')\) es:
 
-$$Q(s, a) \leftarrow Q(s, a) + \alpha\big[\,r + \gamma \max_{a'} Q(s', a') - Q(s, a)\,\big],$$
+\(\(Q(s, a) \leftarrow Q(s, a) + \alpha\big[\,r + \gamma \max_{a'} Q(s', a') - Q(s, a)\,\big],\)\)
 
-donde $\alpha \in (0, 1)$ es la **tasa de aprendizaje** y el término entre corchetes es el **error de diferencia temporal** (TD-error). Bajo condiciones estándar (todo par $(s, a)$ visitado infinitas veces, $\alpha$ decreciente), Q-Learning converge a $Q^*$ con probabilidad 1.
+donde \(\alpha \in (0, 1)\) es la **tasa de aprendizaje** y el término entre corchetes es el **error de diferencia temporal** (TD-error). Bajo condiciones estándar (todo par \((s, a)\) visitado infinitas veces, \(\alpha\) decreciente), Q-Learning converge a \(Q^*\) con probabilidad 1.
 
 ### 7.4. Exploración vs. explotación
 
-El dilema central del RL: ¿exploro acciones nuevas (para descubrir mejores recompensas) o exploto las que ya conozco? La política $\varepsilon$-greedy es el equilibrio estándar:
+El dilema central del RL: ¿exploro acciones nuevas (para descubrir mejores recompensas) o exploto las que ya conozco? La política \(\varepsilon\)-greedy es el equilibrio estándar:
 
-$$a_t = \begin{cases} \arg\max_a Q(s_t, a) & \text{con prob. } 1 - \varepsilon, \\ \text{acción uniforme al azar} & \text{con prob. } \varepsilon. \end{cases}$$
+\(\(a_t = \begin{cases} \arg\max_a Q(s_t, a) & \text{con prob. } 1 - \varepsilon, \\ \text{acción uniforme al azar} & \text{con prob. } \varepsilon. \end{cases}\)\)
 
-Típicamente $\varepsilon$ se **decae** durante el entrenamiento: alto al principio (exploración) y bajo al final (explotación).
+Típicamente \(\varepsilon\) se **decae** durante el entrenamiento: alto al principio (exploración) y bajo al final (explotación).
 
 ---
 
@@ -283,9 +283,9 @@ Típicamente $\varepsilon$ se **decae** durante el entrenamiento: alto al princi
 
 El subdirectorio `TaTeTi_ Ejemplo de Reinforcement learning/` contiene un caso end-to-end de RL sobre el juego tres en raya. El juego es ideal para introducir RL porque:
 
-- El espacio de estados es finito y pequeño: $|S| \le 3^9 \approx 2 \times 10^4$.
+- El espacio de estados es finito y pequeño: \(|S| \le 3^9 \approx 2 \times 10^4\).
 - Las recompensas son escasas y terminales (+1 gana, −1 pierde, 0 empate).
-- El entorno es **determinista** (no hay $P$ estocástico).
+- El entorno es **determinista** (no hay \(P\) estocástico).
 
 ### 8.1. El entorno: `ticTacToe.py`
 
@@ -298,11 +298,11 @@ El script [`ticTacToe.py`](TaTeTi_ Ejemplo de Reinforcement learning/ticTacToe.p
 
 ### 8.2. Entrenamiento: `tic-tac-toe.ipynb`
 
-El notebook [`tic-tac-toe.ipynb`](TaTeTi_ Ejemplo de Reinforcement learning/tic-tac-toe.ipynb) entrena dos agentes por **auto-juego**: en cada episodio, ambos bandos comparten la misma Q-tabla y actualizan $Q$ después de cada movimiento. Los pasos del notebook son:
+El notebook [`tic-tac-toe.ipynb`](TaTeTi_ Ejemplo de Reinforcement learning/tic-tac-toe.ipynb){:download} entrena dos agentes por **auto-juego**: en cada episodio, ambos bandos comparten la misma Q-tabla y actualizan \(Q\) después de cada movimiento. Los pasos del notebook son:
 
 1. Definir las clases `State` (representa una configuración del tablero) y `Player` (implementa la política y el método de actualización).
 2. Inicializar la Q-tabla como un `defaultdict` que mapea tuplas (estado, acción) a un valor inicial (típicamente 0).
-3. Entrenar durante **~50.000 partidas**, decayendo $\varepsilon$ de 1.0 a ~0.1.
+3. Entrenar durante **~50.000 partidas**, decayendo \(\varepsilon\) de 1.0 a ~0.1.
 4. Serializar las políticas aprendidas con `pickle`:
    ```python
    import pickle
@@ -317,18 +317,18 @@ El notebook [`tic-tac-toe.ipynb`](TaTeTi_ Ejemplo de Reinforcement learning/tic-
 - [`policy_p2`](TaTeTi_ Ejemplo de Reinforcement learning/policy_p2) — Q-tabla del jugador 2 (O), respondiendo.
 - [`board.png`](TaTeTi_ Ejemplo de Reinforcement learning/board.png) — imagen estática del tablero (referencia visual; el GUI de `tkinter` redibuja en vivo).
 
-Ambos pickles son `dict[hash(estado) -> float]` con los valores $Q(s, a)$ aprendidos. La política greedy es $\pi(s) = \arg\max_a Q(s, a)$.
+Ambos pickles son `dict[hash(estado) -> float]` con los valores \(Q(s, a)\) aprendidos. La política greedy es \(\pi(s) = \arg\max_a Q(s, a)\).
 
 ### 8.4. Componentes del RL en el ejemplo
 
 Resumiendo, los elementos del marco RL vistos en §7 aplicados al TaTeTi:
 
-- **Estado ($s$)** — tupla de 9 elementos con valores en $\{-, X, O\}$.
-- **Acción ($a$)** — índice de la casilla libre en $[0, 8]$.
-- **Recompensa ($r$)** — $+1$ si gana, $-1$ si pierde, $0$ empate o jugada intermedia.
-- **Función de valor $Q(s, a)$** — tabla aprendida por auto-juego.
-- **Política $\pi(s)$** — `argmax` sobre $Q$ aprendido.
-- **Exploración** — $\varepsilon$-greedy con decaimiento.
+- **Estado (\(s\))** — tupla de 9 elementos con valores en \(\{-, X, O\}\).
+- **Acción (\(a\))** — índice de la casilla libre en \([0, 8]\).
+- **Recompensa (\(r\))** — \(+1\) si gana, \(-1\) si pierde, \(0\) empate o jugada intermedia.
+- **Función de valor \(Q(s, a)\)** — tabla aprendida por auto-juego.
+- **Política \(\pi(s)\)** — `argmax` sobre \(Q\) aprendido.
+- **Exploración** — \(\varepsilon\)-greedy con decaimiento.
 
 ---
 

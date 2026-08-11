@@ -26,7 +26,7 @@ plugins:
   - jekyll-sitemap
 
 # ---------- Markdown ----------
-# Kramdown con math engine mathjax: las fórmulas en $...$ y $$...$$ se
+# Kramdown con math engine mathjax: las fórmulas en \(...\) y \[...\] se
 # preprocesan a <script type="math/tex">...</script> que MathJax (cargado
 # en _includes/head_custom.html) renderiza en el navegador.
 markdown: kramdown
@@ -35,6 +35,23 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
   hard_wrap: false
+
+# ---------- Exclusiones ----------
+# Jekyll no debe procesar archivos binarios o cuyo contenido tiene
+# delimitadores de Liquid que rompen el build (algunos notebooks exportados
+# a HTML o .ipynb con widgets Plotly usan {{ ... }}).
+exclude:
+  - '**/notebooks/**/*.ipynb'
+  - '**/slides/**'
+  - '**/data/**'
+  - '**/mlops-docker-example/**'
+  - '**/mlflow/**'
+  - '**/wine-app/**'
+  - '**/.ipynb_checkpoints/**'
+  - 'Gemfile'
+  - 'Gemfile.lock'
+  - 'README.md'
+  - 'vendor/'
 
 # ---------- Configuración del tema ----------
 search_enabled: true

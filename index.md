@@ -67,9 +67,9 @@ La materia se aprueba con la **entrega y aprobación de los trabajos prácticos*
 
 La nota final de la materia se calcula como:
 
-$$
+\[
 \text{Nota}_{\text{final}} \;=\; \text{redondeo}\!\left(\, 0{,}2 \cdot \text{Nota}_{\text{TP1}} \;+\; 0{,}6 \cdot \text{Nota}_{\text{TP2}} \;+\; 0{,}2 \cdot \text{Nota}_{\text{teoría}} \,\right)
-$$
+\]
 
 - **TP1** pesa **20%** en la nota final.
 - **TP2** pesa **60%** (es el TP integrador).
@@ -77,16 +77,16 @@ $$
 
 Para **aprobar** la materia se requiere:
 
-- $\text{Nota}_{\text{final}} \geq 4$ (cuatro), **y**
-- $\text{Nota}_{\text{teoría}} \geq 4$ (cuatro).
+- \(\text{Nota}_{\text{final}} \geq 4\) (cuatro), **y**
+- \(\text{Nota}_{\text{teoría}} \geq 4\) (cuatro).
 
-Cada TP se considera aprobado con nota $\geq 4$. En caso de no aprobar un TP, se puede **recuperar una vez** durante el cuatrimestre.
+Cada TP se considera aprobado con nota \(\geq 4\). En caso de no aprobar un TP, se puede **recuperar una vez** durante el cuatrimestre.
 
 ### Asistencia y regularidad
 
 - La asistencia a clases teóricas y prácticas es **libre** pero altamente recomendada.
 - Para mantener la **regularidad**, los TPs deben entregarse en las fechas estipuladas (o en la fecha de recuperación).
-- **Promoción directa:** $\text{Nota}_{\text{final}} \geq 7$ sin necesidad de examen final separado.
+- **Promoción directa:** \(\text{Nota}_{\text{final}} \geq 7\) sin necesidad de examen final separado.
 
 ---
 
